@@ -114,26 +114,26 @@ router.get('/vote/:candidateID', jwtAuthMiddleware, async(req, res) => {
     }
 })
 
-//route to get the no.of votes
-router.get('/vote/count', async (req, res) => {
-    try{
-        // Find all candidates and sort them by voteCount in descending order
-        const candidate = await Candidate.find().sort({voteCount: 'desc'});
+// //route to get the no.of votes
+// router.get('/vote/count', async (req, res) => {
+//     try{
+//         // Find all candidates and sort them by voteCount in descending order
+//         const candidate = await Candidate.find().sort({voteCount: 'desc'});
 
-        // Map the candidates to only return their name and voteCount
-        const voteRecord = candidate.map((data)=>{
-            return {
-                party: data.party,
-                count: data.voteCount
-            }
-        });
+//         // Map the candidates to only return their name and voteCount
+//         const voteRecord = candidate.map((data)=>{
+//             return {
+//                 party: data.party,
+//                 count: data.voteCount
+//             }
+//         });
 
-        return res.status(200).json(voteRecord);
-    }catch(err){
-        console.log(err);
-        res.status(500).json({error: 'Internal Server Error'});
-    }
-});
+//         return res.status(200).json(voteRecord);
+//     }catch(err){
+//         console.log(err);
+//         res.status(500).json({error: 'Internal Server Error'});
+//     }
+// });
 
 
 //route to get list of all candidates with their party name
